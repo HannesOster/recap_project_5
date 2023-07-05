@@ -8,8 +8,8 @@ export default function ArtPieces({ pieces }) {
         {pieces.map((piece) => (
           <li key={piece.id}>
             <ArtPiecePreview
-              image={piece.image}
-              title={piece.title}
+              imageSource={piece.imageSource}
+              name={piece.name}
               artist={piece.artist}
             />
           </li>
