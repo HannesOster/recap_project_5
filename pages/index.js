@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import Artpieces from "../components/ArtPieces/ArtPieces";
+import Link from "next/link";
 
 export default function HomePage() {
   const { data, isLoading, error } = useSWR(
@@ -16,6 +17,7 @@ export default function HomePage() {
     <div>
       <h1>Hello from Next.js</h1>
       <Artpieces pieces={data} />
+      <Link href="/spotlight">Random Artpiece</Link>
     </div>
   );
 }
