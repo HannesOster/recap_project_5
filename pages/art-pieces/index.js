@@ -16,6 +16,7 @@ export default function PiecesList() {
   if (error) {
     return <h1>{error.message}</h1>;
   }
+  console.log("Slug:", data[1].slug);
   return (
     <div>
       <ul>
