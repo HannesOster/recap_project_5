@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import FavoriteButton from "../FavoriteButton";
 
 export default function ArtPieceDetails({ artPiece }) {
   return (
@@ -19,6 +20,7 @@ export default function ArtPieceDetails({ artPiece }) {
           <li>Year: {artPiece.year}</li>
           <li>genre: {artPiece.genre} </li>
         </ul>
+        <FavoriteButton />
         <Link href="/art-pieces">
           <button type="button">Back</button>
         </Link>

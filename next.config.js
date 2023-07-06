@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["example-apis.vercel.app"],
+    domains: ["example-apis.vercel.app", "http://www.w3.org/2000/svg"],
   },
   compiler: {
     styledComponents: true,
