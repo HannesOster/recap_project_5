@@ -15,13 +15,11 @@ export default function ArtPiecesPage() {
     return <h1>{error.message}</h1>;
   }
 
-  const artPiece = data.find((piece) => {
-    return piece.slug === slug;
-  });
-
-  console.log(data);
   const artPieceIndex = data.findIndex((piece) => piece.slug === slug);
-  const artPiece2 = data[artPieceIndex];
-  console.log(artPieceIndex);
-  return <ArtPieceDetails artPiece={artPiece2} />;
+  const artPiece = data[artPieceIndex];
+
+  if (!artPiece) {
+    <h1>!!!! Art Piece undefined !!!!</h1>;
+  }
+  return <ArtPieceDetails artPiece={artPiece} />;
 }

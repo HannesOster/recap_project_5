@@ -1,5 +1,5 @@
 import Image from "next/image";
-import useSWR from "swr";
+import Link from "next/link";
 
 export default function ArtPieceDetails({ artPiece }) {
   return (
@@ -8,7 +8,10 @@ export default function ArtPieceDetails({ artPiece }) {
         <Image
           src={artPiece.imageSource}
           alt={artPiece.name}
-          dimensions={artPiece.dimensions}
+          height={850}
+          width={650}
+          //height={artPiece.dimensions.height}
+          //width={artPiece.dimensions.width}
         />
         <h3>{artPiece.name}</h3>
         <ul>
@@ -16,7 +19,9 @@ export default function ArtPieceDetails({ artPiece }) {
           <li>Year: {artPiece.year}</li>
           <li>genre: {artPiece.genre} </li>
         </ul>
-        <button type="button">Back</button>
+        <Link href="/art-pieces">
+          <button type="button">Back</button>
+        </Link>
       </article>
     </>
   );
