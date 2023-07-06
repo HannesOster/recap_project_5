@@ -1,13 +1,13 @@
 import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
-
-
+import Navigation from "@/components/Navigation/Navigation";
 
 async function myFetcher(url) {
   const response = await fetch(url);
   const data = await response.json();
   return data;
 }
+
 export default function App({ Component, pageProps }) {
   return (
     <>
@@ -19,6 +19,7 @@ export default function App({ Component, pageProps }) {
       >
         <Component {...pageProps} />
       </SWRConfig>
+      <Navigation />
     </>
   );
 }
