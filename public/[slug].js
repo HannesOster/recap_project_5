@@ -2,7 +2,7 @@ import ArtPieceDetails from "@/components/ArtPieceDetails";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
-export default function ArtPiecesPage() {
+export default function ArtPiecesPage({ artPiecesInfo, onToggle }) {
   const router = useRouter();
   const { slug } = router.query;
   const { data, error, isLoading } = useSWR(
@@ -21,5 +21,11 @@ export default function ArtPiecesPage() {
   if (!artPiece) {
     <h1>!!!! Art Piece undefined !!!!</h1>;
   }
-  return <ArtPieceDetails artPiece={artPiece} />;
+  return (
+    <ArtPieceDetails
+      artPiecesInfo={artPiecesInfo}
+      onToggle={onToggle}
+      artPiece={artPiece}
+    />
+  );
 }

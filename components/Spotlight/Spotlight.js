@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import ArtPiecePreview from "@/components/ArtPiecePreview/ArtPiecePreview";
 
-export default function Spotlight() {
+export default function Spotlight({ artPiecesInfo, onToggle }) {
   const { data, isLoading, error } = useSWR(
     "https://example-apis.vercel.app/api/art"
   );
@@ -18,5 +18,11 @@ export default function Spotlight() {
   }
 
   const randomPiece = getRandomArtPiece(data);
-  return <ArtPiecePreview {...randomPiece} />;
+  return (
+    <ArtPiecePreview
+      artPiecesInfo={artPiecesInfo}
+      onToggle={onToggle}
+      {...randomPiece}
+    />
+  );
 }

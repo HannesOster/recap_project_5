@@ -2,14 +2,11 @@ import useSWR from "swr";
 import ArtPieces from "@/components/ArtPieces/ArtPieces";
 import { useState } from "react";
 
-export default function PiecesList() {
+export default function PiecesList({ artPiecesInfo, onToggle }) {
   const URL = "https://example-apis.vercel.app/api/art";
-
-  const [pieces, setPieces] = useState([]);
 
   const { data, isLoading, error } = useSWR(URL);
 
-  console.log("data:", data);
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
@@ -20,7 +17,11 @@ export default function PiecesList() {
   return (
     <div>
       <ul>
-        <ArtPieces pieces={data} />
+        <ArtPieces
+          artPiecesInfo={artPiecesInfo}
+          onToggle={onToggle}
+          pieces={data}
+        />
       </ul>
     </div>
   );

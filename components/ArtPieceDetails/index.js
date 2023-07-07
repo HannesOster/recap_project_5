@@ -2,7 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import FavoriteButton from "../FavoriteButton";
 
-export default function ArtPieceDetails({ artPiece }) {
+export default function ArtPieceDetails({
+  slug,
+  artPiecesInfo,
+  onToggle,
+  artPiece,
+}) {
   return (
     <>
       <article>
@@ -20,7 +25,11 @@ export default function ArtPieceDetails({ artPiece }) {
           <li>Year: {artPiece.year}</li>
           <li>genre: {artPiece.genre} </li>
         </ul>
-        <FavoriteButton />
+        <FavoriteButton
+          slug={slug}
+          artPiecesInfo={artPiecesInfo}
+          onToggle={onToggle}
+        />
         <Link href="/art-pieces">
           <button type="button">Back</button>
         </Link>
