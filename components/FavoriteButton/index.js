@@ -1,8 +1,6 @@
 import Image from "next/image";
 
-
 export default function FavoriteButton({ slug, artPiecesInfo, onToggle }) {
-
   return (
     <>
       <button onClick={() => onToggle(slug)} type="button">
@@ -14,3 +12,6 @@ export default function FavoriteButton({ slug, artPiecesInfo, onToggle }) {
         ></Image>
       </button>
       <button onClick={() => console.log(artPiecesInfo)}>console log</button>
+    </>
+  );
+}
