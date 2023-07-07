@@ -1,11 +1,16 @@
 import Image from "next/image";
-import Heart from "../../public/resources/assets/heart.svg";
 
 export default function FavoriteButton() {
-  const heart = Heart();
   return (
     <>
-      <button type="button">{heart}</button>
+      <button type="button">
+        <Image
+          src="/resources/assets/heart.svg"
+          alt="bild"
+          width={30}
+          height={30}
+        ></Image>
+      </button>
     </>
   );
 }
