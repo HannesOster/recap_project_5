@@ -2,6 +2,7 @@ import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
 import Navigation from "@/components/Navigation/Navigation";
 import { useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 
 async function myFetcher(url) {
   const response = await fetch(url);
@@ -10,7 +11,12 @@ async function myFetcher(url) {
 }
 
 export default function App({ Component, pageProps }) {
-  const [artPiecesInfo, setArtPiecesInfo] = useState([]);
+  const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
+    "artPiecesInfo",
+    {
+      defaultValue: [],
+    }
+  );
 
   function handleFavToggle(favSlug) {
     if (!artPiecesInfo.includes(favSlug)) {

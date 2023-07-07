@@ -14,6 +14,7 @@ export default function PiecesList({ artPiecesInfo, onToggle }) {
     return <h1>{error.message}</h1>;
   }
   console.log("Slug:", data[1].slug);
+  console.log(artPiecesInfo);
   return (
     <div>
       <ul>
