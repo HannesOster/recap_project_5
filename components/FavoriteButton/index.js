@@ -1,14 +1,16 @@
 import Image from "next/image";
-import Heart from "../../public/resources/assets/heart.svg";
+
 
 export default function FavoriteButton({ slug, artPiecesInfo, onToggle }) {
-  const heart = Heart();
+
   return (
     <>
       <button onClick={() => onToggle(slug)} type="button">
-        {heart}
+        <Image
+          src="/resources/assets/heart.svg"
+          alt="bild"
+          width={30}
+          height={30}
+        ></Image>
       </button>
       <button onClick={() => console.log(artPiecesInfo)}>console log</button>
-    </>
-  );
-}
