@@ -1,9 +1,11 @@
 import Image from "next/image";
 
-export default function FavoriteButton() {
+
+export default function FavoriteButton({ slug, artPiecesInfo, onToggle }) {
+
   return (
     <>
-      <button type="button">
+      <button onClick={() => onToggle(slug)} type="button">
         <Image
           src="/resources/assets/heart.svg"
           alt="bild"
@@ -11,6 +13,4 @@ export default function FavoriteButton() {
           height={30}
         ></Image>
       </button>
-    </>
-  );
-}
+      <button onClick={() => console.log(artPiecesInfo)}>console log</button>

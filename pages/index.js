@@ -1,9 +1,9 @@
 import Spotlight from "@/components/Spotlight/Spotlight";
 
-export default function HomePage() {
+export default function HomePage({ artPiecesInfo, onToggle }) {
   return (
     <>
-      <Spotlight />
+      <Spotlight artPiecesInfo={artPiecesInfo} onToggle={onToggle} />
     </>
   );
 }

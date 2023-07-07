@@ -3,6 +3,8 @@ import Link from "next/link";
 import FavoriteButton from "../FavoriteButton";
 
 export default function ArtPiecePreview({
+  artPiecesInfo,
+  onToggle,
   imageSource,
   name,
   artist,
@@ -16,7 +18,11 @@ export default function ArtPiecePreview({
         <Image src={imageSource} alt={name} width={100} height={100} />
       </Link>
       <p>By {artist}</p>
-      <FavoriteButton />
+      <FavoriteButton
+        slug={slug}
+        artPiecesInfo={artPiecesInfo}
+        onToggle={onToggle}
+      />
     </>
   );
 }

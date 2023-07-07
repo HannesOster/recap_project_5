@@ -2,7 +2,7 @@ import ArtPieceDetails from "@/components/ArtPieceDetails";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
-export default function ArtPiecesPage() {
+export default function ArtPiecesPage({ artPiecesInfo, onToggle }) {
   const router = useRouter();
   const { slug } = router.query;
   const { data, error, isLoading } = useSWR(
@@ -23,5 +23,12 @@ export default function ArtPiecesPage() {
   const artPieceIndex = data.findIndex((piece) => piece.slug === slug);
   const artPiece2 = data[artPieceIndex];
   console.log(artPieceIndex);
-  return <ArtPieceDetails artPiece={artPiece2} />;
+  return (
+    <ArtPieceDetails
+      slug={slug}
+      artPiecesInfo={artPiecesInfo}
+      onToggle={onToggle}
+      artPiece={artPiece2}
+    />
+  );
 }
