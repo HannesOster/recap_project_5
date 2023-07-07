@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import FavoriteButton from "../FavoriteButton";
+import CommentForm from "../CommentForm/CommentForm";
+import { styled } from "styled-components";
 
 export default function ArtPieceDetails({
   slug,
@@ -8,6 +10,8 @@ export default function ArtPieceDetails({
   onToggle,
   artPiece,
 }) {
+  const { colors } = artPiece;
+
   return (
     <>
       <article>
@@ -25,6 +29,23 @@ export default function ArtPieceDetails({
           <li>Year: {artPiece.year}</li>
           <li>genre: {artPiece.genre} </li>
         </ul>
+        <p>Used Colors:</p>
+        <ul>
+          {colors.map((color) => {
+            return (
+              <div
+                key={color}
+                style={{
+                  backgroundColor: color,
+                  height: 50,
+                  width: 50,
+                  borderRadius: 50,
+                }}
+              ></div>
+            );
+          })}
+        </ul>
+        <CommentForm />
         <FavoriteButton
           slug={slug}
           artPiecesInfo={artPiecesInfo}

@@ -11,11 +11,14 @@ export default function Favorites({ artPiecesInfo, onToggle }) {
   if (error) {
     return <h1>{error.message}</h1>;
   }
-  //Use data from the artPiecesInfo state to filter for all favorite art pieces
-
-  const filteredPieces = data.filter((piece) =>
-    artPiecesInfo.includes(piece.slug)
+  //Use data from the artPiecesInfo state to filter for all favorite art piecesc
+  const filteredArtPieceInfo = artPiecesInfo.filter(
+    (piece) => piece.isFavorite === true
   );
+  const filteredPieces = data.filter((piece) =>
+    filteredArtPieceInfo.find((favPiece) => piece.slug === favPiece.slug)
+  );
+
   console.log(data);
   console.log(artPiecesInfo);
   console.log(filteredPieces);
