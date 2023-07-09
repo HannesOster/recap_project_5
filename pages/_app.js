@@ -42,18 +42,31 @@ export default function App({ Component, pageProps }) {
       );
     }
   }
+
   const [comments, setComments] = useLocalStorageState([]);
 
-  const initialArtPiecesinfo = [];
-
-  function handleSubmitComment(comment) {
+  function handleSubmitComment(comment, commentSlug) {
     const newComment = {
       text: comment,
       timestamp: new Date().toLocaleString(),
     };
 
-    const updatedComments = [...comments, newComment];
-    setArtPiecesInfo(updatedComments);
+    if (!artPiecesInfo.find((piece) => piece.slug === commentSlug)) {
+      setArtPiecesInfo([
+        ...artPiecesInfo,
+        { isFavorite: true, slug: commentSlug, comments: [newComment] },
+      ]);
+    } else {
+      setArtPiecesInfo(
+        artPiecesInfo.map((piece) => {
+          if (piece.slug === commentSlug) {
+            // return new piece object with toggled isFavorite
+            return { ...piece, comments: [...piece.comments, newComment] };
+          }
+          return piece;
+        })
+      );
+    }
   }
 
   return (
