@@ -19,11 +19,53 @@ export default function App({ Component, pageProps }) {
   );
 
   function handleFavToggle(favSlug) {
-    if (!artPiecesInfo.includes(favSlug)) {
-      return setArtPiecesInfo([...artPiecesInfo, favSlug]);
+    // step 1: check if artPiecesinfo object is present for slug
+
+    // If no: create a new artPiecesInfo object with isFavorite = true
+
+    // If yes: toggle isFavorite of artPiecesInfo object
+
+    if (!artPiecesInfo.find((piece) => piece.slug === favSlug)) {
+      setArtPiecesInfo([
+        ...artPiecesInfo,
+        { isFavorite: true, slug: favSlug, comments: [] },
+      ]);
+    } else {
+      setArtPiecesInfo(
+        artPiecesInfo.map((piece) => {
+          if (piece.slug === favSlug) {
+            // return new piece object with toggled isFavorite
+            return { ...piece, isFavorite: !piece.isFavorite };
+          }
+          return piece;
+        })
+      );
     }
-    if (artPiecesInfo.includes(favSlug)) {
-      return setArtPiecesInfo(artPiecesInfo.filter((slug) => favSlug !== slug));
+  }
+
+  const [comments, setComments] = useLocalStorageState([]);
+
+  function handleSubmitComment(comment, commentSlug) {
+    const newComment = {
+      text: comment,
+      timestamp: new Date().toLocaleString(),
+    };
+
+    if (!artPiecesInfo.find((piece) => piece.slug === commentSlug)) {
+      setArtPiecesInfo([
+        ...artPiecesInfo,
+        { isFavorite: true, slug: commentSlug, comments: [newComment] },
+      ]);
+    } else {
+      setArtPiecesInfo(
+        artPiecesInfo.map((piece) => {
+          if (piece.slug === commentSlug) {
+            // return new piece object with toggled isFavorite
+            return { ...piece, comments: [...piece.comments, newComment] };
+          }
+          return piece;
+        })
+      );
     }
   }
 

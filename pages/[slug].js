@@ -19,16 +19,12 @@ export default function ArtPiecesPage({ artPiecesInfo, onToggle }) {
     return piece.slug === slug;
   });
 
-  console.log(data);
-  const artPieceIndex = data.findIndex((piece) => piece.slug === slug);
-  const artPiece2 = data[artPieceIndex];
-  console.log(artPieceIndex);
   return (
     <ArtPieceDetails
       slug={slug}
       artPiecesInfo={artPiecesInfo}
       onToggle={onToggle}
-      artPiece={artPiece2}
+      artPiece={artPiece}
     />
   );
 }
