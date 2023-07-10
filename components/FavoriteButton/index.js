@@ -22,6 +22,4 @@ export default function FavoriteButton({ slug, artPiecesInfo, onToggle }) {
           height={20}
         ></HeartImage>
       </ButtonItem>
-    </>
-  );
-}
+    </> ); }
