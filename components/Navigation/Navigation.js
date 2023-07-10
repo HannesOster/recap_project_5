@@ -19,6 +19,7 @@ export default function Navigation() {
   return (
     <Navbar>
       <Link href="/">Spotlight</Link>
+      <Link href="/favorites">Favorites</Link>
       <Link href="/art-pieces">Pieces</Link>
     </Navbar>
   );
