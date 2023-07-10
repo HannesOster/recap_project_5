@@ -1,16 +1,27 @@
-import Image from "next/image";
+import React from "react";
+import styled from "styled-components";
+import Image from "public/resources/assets/heart.svg";
 
+const ButtonItem = styled.button`
+  background-color: transparent;
+  border: none;
+`;
+
+const HeartImage = styled(Image)`
+  fill: ${(props) => (props.isFavorite ? "#ff99e2" : "#7d7d7d")};
+`;
 
 export default function FavoriteButton({ slug, artPiecesInfo, onToggle }) {
-
   return (
     <>
-      <button onClick={() => onToggle(slug)} type="button">
-        <Image
-          src="/resources/assets/heart.svg"
-          alt="bild"
-          width={30}
-          height={30}
-        ></Image>
-      </button>
-      <button onClick={() => console.log(artPiecesInfo)}>console log</button>
+      <ButtonItem onClick={() => onToggle(slug)} type="button">
+        <HeartImage
+          isFavorite={false}
+          alt="FavHeart"
+          width={20}
+          height={20}
+        ></HeartImage>
+      </ButtonItem>
+    </>
+  );
+}
