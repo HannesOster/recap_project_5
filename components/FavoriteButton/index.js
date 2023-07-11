@@ -1,17 +1,35 @@
-import Image from "next/image";
+import React, { useState } from "react";
+import styled from "styled-components";
+import Image from "public/resources/assets/heart.svg";
+
+const ButtonItem = styled.button`
+  background-color: transparent;
+  border: none;
+`;
+
+const HeartImage = styled(Image)`
+  fill: ${(props) => (props.isFavorite ? "#ff99e2" : "#7d7d7d")};
+`;
 
 export default function FavoriteButton({ slug, artPiecesInfo, onToggle }) {
+  const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
+  const [isFavorite, setIsFavorite] = useState(artPiece?.isFavorite || false);
+
+  const handleToggle = () => {
+    setIsFavorite((prevState) => !prevState); // Umschalten des Favoritenstatus
+    onToggle(slug); // Aufruf der übergebenen Funktion zum Aktualisieren der Favoritenliste
+  };
+
   return (
     <>
-      <button onClick={() => onToggle(slug)} type="button">
-        <Image
-          src="/resources/assets/heart.svg"
-          alt="bild"
-          width={30}
-          height={30}
-        ></Image>
-      </button>
-      <button onClick={() => console.log(artPiecesInfo)}>console log</button>
+      <ButtonItem onClick={() => handleToggle()} type="button">
+        <HeartImage
+          isFavorite={isFavorite}
+          alt="FavHeart"
+          width={20}
+          height={20}
+        />
+      </ButtonItem>
     </>
   );
 }

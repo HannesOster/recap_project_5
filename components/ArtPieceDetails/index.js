@@ -4,6 +4,10 @@ import FavoriteButton from "../FavoriteButton";
 import CommentForm from "../CommentForm/CommentForm";
 import { styled } from "styled-components";
 
+const article = styled.article`
+  display: flex;
+`;
+
 export default function ArtPieceDetails({
   slug,
   artPiecesInfo,

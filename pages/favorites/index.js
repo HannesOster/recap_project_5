@@ -23,7 +23,7 @@ export default function Favorites({ artPiecesInfo, onToggle }) {
   console.log(artPiecesInfo);
   console.log(filteredPieces);
 
-  return <ArtPieces onToggle={onToggle} pieces={filteredPieces} />;
+  return <ArtPieces onToggle={onToggle} artPiecesInfo={artPiecesInfo} pieces={filteredPieces} />;
 }
 
 //Array mit Slugs, die favorisiert sind
