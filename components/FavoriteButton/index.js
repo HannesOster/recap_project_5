@@ -12,7 +12,7 @@ const HeartImage = styled(Image)`
 `;
 
 export default function FavoriteButton({ slug, artPiecesInfo, onToggle }) {
-  const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
+  const artPiece = artPiecesInfo.find((piece) => piece?.slug === slug);
   const [isFavorite, setIsFavorite] = useState(artPiece?.isFavorite || false);
 
   const handleToggle = () => {

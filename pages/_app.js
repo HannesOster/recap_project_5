@@ -43,13 +43,16 @@ export default function App({ Component, pageProps }) {
     }
   }
 
-  const [comments, setComments] = useLocalStorageState([]);
+  //const [comments, setComments] = useLocalStorageState([]);
 
-  function handleSubmitComment(comment, commentSlug) {
+  function handleSubmitComment(event, comment, commentSlug) {
+    event.preventDefault();
     const newComment = {
       text: comment,
       timestamp: new Date().toLocaleString(),
     };
+
+    console.log(newComment);
 
     if (!artPiecesInfo.find((piece) => piece.slug === commentSlug)) {
       setArtPiecesInfo([
@@ -63,11 +66,38 @@ export default function App({ Component, pageProps }) {
             // return new piece object with toggled isFavorite
             return { ...piece, comments: [...piece.comments, newComment] };
           }
+          event.target.reset();
           return piece;
         })
       );
     }
   }
+  console.log(artPiecesInfo);
+
+  function handleDeleteComment(commentSlug, timestamp) {
+    console.log(commentSlug);
+    if (!artPiecesInfo) {
+      console.log("ArtPiecesInfo ist leer");
+    }
+    if (!commentSlug) {
+      console.log("CommentSlug is undefined");
+    }
+    setArtPiecesInfo(
+      artPiecesInfo.map((piece) => {
+        if (piece.slug === commentSlug) {
+          return {
+            ...piece,
+            comments: piece.comments.filter(
+              (comment) => comment.timestamp !== timestamp
+            ),
+          };
+        }
+        return piece;
+      })
+    );
+  }
+
+  console.log("artPiecesInfo app.js: ", artPiecesInfo); //null
 
   return (
     <>
@@ -81,6 +111,8 @@ export default function App({ Component, pageProps }) {
           artPiecesInfo={artPiecesInfo}
           onToggle={handleFavToggle}
           {...pageProps}
+          onSubmitComment={handleSubmitComment}
+          onDeleteComment={handleDeleteComment}
         />
       </SWRConfig>
       <Navigation />

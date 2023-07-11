@@ -3,6 +3,7 @@ import Link from "next/link";
 import FavoriteButton from "../FavoriteButton";
 
 export default function ArtPiecePreview({
+  onSubmitComment,
   artPiecesInfo,
   onToggle,
   imageSource,
