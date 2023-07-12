@@ -3,18 +3,24 @@ import Link from "next/link";
 import FavoriteButton from "../FavoriteButton";
 import CommentForm from "../CommentForm/CommentForm";
 import { styled } from "styled-components";
+import Comments from "../Comments/Comments";
 
 const article = styled.article`
   display: flex;
 `;
 
 export default function ArtPieceDetails({
+  onDeleteComment,
+  onSubmitComment,
   slug,
   artPiecesInfo,
   onToggle,
   artPiece,
 }) {
   const { colors } = artPiece;
+
+  console.log("artPiecesInfo DetailPage: ", artPiecesInfo); //null
+  console.log("artPiece DetailPage: ", artPiece); //funktioniert
 
   return (
     <>
@@ -35,10 +41,10 @@ export default function ArtPieceDetails({
         </ul>
         <p>Used Colors:</p>
         <ul>
-          {colors.map((color) => {
+          {colors?.map((color) => {
             return (
               <div
-                key={color}
+                key={artPiece.color}
                 style={{
                   backgroundColor: color,
                   height: 50,
@@ -49,7 +55,13 @@ export default function ArtPieceDetails({
             );
           })}
         </ul>
-        <CommentForm />
+        <CommentForm onSubmitComment={onSubmitComment} slug={slug} />
+        <Comments
+          slug={slug}
+          artPiecesInfo={artPiecesInfo}
+          onDeleteComment={onDeleteComment}
+          artPiece={artPiece}
+        />
         <FavoriteButton
           slug={slug}
           artPiecesInfo={artPiecesInfo}

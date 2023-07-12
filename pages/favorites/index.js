@@ -12,6 +12,8 @@ export default function Favorites({ artPiecesInfo, onToggle }) {
     return <h1>{error.message}</h1>;
   }
   //Use data from the artPiecesInfo state to filter for all favorite art piecesc
+
+  console.log("Favorites index.js artPiecesInfo", artPiecesInfo);
   const filteredArtPieceInfo = artPiecesInfo.filter(
     (piece) => piece.isFavorite === true
   );
@@ -19,11 +21,17 @@ export default function Favorites({ artPiecesInfo, onToggle }) {
     filteredArtPieceInfo.find((favPiece) => piece.slug === favPiece.slug)
   );
 
-  console.log(data);
-  console.log(artPiecesInfo);
-  console.log(filteredPieces);
+  console.log("favorites index.js data:", data);
+  console.log("favorites index.js artPiecesInfo:", artPiecesInfo);
+  console.log("favorites index.js filteredPieces:", filteredPieces);
 
-  return <ArtPieces onToggle={onToggle} artPiecesInfo={artPiecesInfo} pieces={filteredPieces} />;
+  return (
+    <ArtPieces
+      onToggle={onToggle}
+      artPiecesInfo={artPiecesInfo}
+      pieces={filteredPieces}
+    />
+  );
 }
 
 //Array mit Slugs, die favorisiert sind

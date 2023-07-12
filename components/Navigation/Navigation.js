@@ -13,6 +13,7 @@ const Navbar = styled.nav`
   width: 100%;
   height: 60px;
   background-color: #9a031e;
+  margin-top: 300px;
 `;
 
 export default function Navigation() {
