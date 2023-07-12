@@ -12,7 +12,7 @@ const Navbar = styled.nav`
   left: 0;
   width: 100%;
   height: 60px;
-  background-color: #9a031e;
+  background-color: #b57ea4;
   margin-top: 300px;
 `;
 
@@ -20,8 +20,8 @@ export default function Navigation() {
   return (
     <Navbar>
       <Link href="/">Spotlight</Link>
-      <Link href="/favorites">Favorites</Link>
-      <Link href="/art-pieces">Pieces</Link>
+      <Link href="/favorites">Favorite Art Pieces</Link>
+      <Link href="/art-pieces">All Art Pieces</Link>
     </Navbar>
   );
 }
