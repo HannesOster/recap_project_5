@@ -11,12 +11,15 @@ async function myFetcher(url) {
 }
 
 export default function App({ Component, pageProps }) {
+  /*
   const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
     "artPiecesInfo",
     {
       defaultValue: [],
     }
-  );
+  );*/
+
+  const [artPiecesInfo, setArtPiecesInfo] = useState([]);
 
   function handleFavToggle(favSlug) {
     // step 1: check if artPiecesinfo object is present for slug
@@ -72,7 +75,6 @@ export default function App({ Component, pageProps }) {
       );
     }
   }
-  console.log(artPiecesInfo);
 
   function handleDeleteComment(commentSlug, timestamp) {
     console.log(commentSlug);

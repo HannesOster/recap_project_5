@@ -13,8 +13,8 @@ export default function PiecesList({ artPiecesInfo, onToggle }) {
   if (error) {
     return <h1>{error.message}</h1>;
   }
-  console.log("Slug:", data[1].slug);
-  console.log(artPiecesInfo);
+  console.log("Art Pieces index.js data[1].slug:", data[1].slug);
+  console.log("Art Pieces index.js artPiecesInfo", artPiecesInfo);
   return (
     <div>
       <ul>
