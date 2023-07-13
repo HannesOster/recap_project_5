@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
   *,
   *::before,
   *::after {
@@ -9,7 +10,10 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: system-ui;
+    font-family: 'Lora', serif;
+    background-color: #0c103b; 
+    color: #b57ea4; 
+
   }
 
   .delete-btn{
@@ -18,6 +22,14 @@ export default createGlobalStyle`
     position: absolute;
     right: 10px;
     top: 35px;
+  }
+
+  ul {
+    display: flex;
+    list-style: none; 
+    margin: 0px 0px 0px 0px; 
+    padding: 0; 
+   
   }
 
   .comments-list{
